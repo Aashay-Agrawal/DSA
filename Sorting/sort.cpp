@@ -1,43 +1,35 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-void selectionSort(int arr[], int n)
-{
-  int i, j, min_idx;
-
-  for (i = 0; i < n - 1; i++)
-  {
-
-    min_idx = i;
-    for (j = i + 1; j < n; j++)
-    {
-      if (arr[j] < arr[min_idx])
-        min_idx = j;
+void selectionSort(int arr[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    int min_index = i;
+    for (int j = i + 1; j < n; j++) {
+      if (arr[j] < arr[min_index]) {
+        min_index = j;
+      }
     }
-
-    if (min_idx != i)
-      swap(arr[min_idx], arr[i]);
+    int temp = arr[i];
+    arr[i] = arr[min_index];
+    arr[min_index] = temp;
   }
 }
 
-void printArray(int arr[], int size)
-{
-  int i;
-  for (i = 0; i < size; i++)
-  {
-    cout << arr[i] << " ";
-    cout << endl;
-  }
-}
-
-int main()
-{
+int main() {
   int arr[] = {64, 25, 12, 22, 11};
   int n = sizeof(arr) / sizeof(arr[0]);
 
-  // Function Call
+  cout << "Original array: ";
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+
   selectionSort(arr, n);
-  cout << "Sorted array: \n";
-  printArray(arr, n);
+
+  cout << "\nSorted array: ";
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+
   return 0;
 }
